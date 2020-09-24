@@ -27,7 +27,7 @@ Pour cela:
 
 ouvrez R studio taper dans la console R de Rstudio: install.packages("tidyverse")
 
-![Screenshot of correct package installation](package_installation_instructions.png)
+![Screenshot of correct package installation](installation_package_instructions.png)
 
 
 **Prérequis:** 
