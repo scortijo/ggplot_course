@@ -230,7 +230,7 @@ ggplot(expt1, aes(genotype, days.to.flower)) +
   geom_boxplot(colour = "red")
 ```
 
-Ou la couleur à l'interieur ( _fills_) des boxplots:
+Ou la couleur à l'interieur ( _fill_) des boxplots:
 
 ```{r}
 ggplot(expt1, aes(genotype, days.to.flower)) +
@@ -275,11 +275,11 @@ ggplot(expt1, aes(genotype, days.to.flower)) +
   geom_boxplot(aes(fill = fluctuation), alpha = 0.5)
 ```
 
->**Exercice:** sNous voulons étudier la relation entre number of rosette leafs et blade length in mm pour les genotypes. 
+>**Exercice:** Nous voulons étudier la relation entre le nombre de feuille de rosette et la longueur la limbe des feuilles (en mm) pour les genotypes. 
 >
-> Pour cela, dessine un scatter plot (`geom_point()`) entre `blade.length.mm` et `rosette.leaf.num` en colorant les points ne fonction de `genotype`. 
+> Pour cela, dessinez un scatter plot (`geom_point()`) entre `blade.length.mm` et `rosette.leaf.num` en colorant les points en fonction de `genotype`. 
 >
-> Que se passe t'il so les points sont colorés en fonction de `days.to.bolt`?
+> Que se passe t'il si les points sont colorés en fonction de `days.to.bolt`?
 
 
 ## Facetting
