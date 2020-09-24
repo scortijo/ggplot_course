@@ -1,4 +1,4 @@
-# slcu_r_course
+# Formation ggplot2
 
-Modular R course run at SLCU. Website: 
+Formation ggplot2 faite dans le cadre du réseau [MSB](https://groupes.renater.fr/wiki/montpellier-biostat/index). Site du cours: 
 
