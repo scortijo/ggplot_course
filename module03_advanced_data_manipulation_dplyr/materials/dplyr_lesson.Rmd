@@ -1,0 +1,353 @@
+---
+output:
+  html_document:
+    toc: yes
+    toc_float: yes
+---
+
+# [SLCU R Course](https://tavareshugo.github.io/slcu_r_course/)
+
+## Data manipulation with R - material
+
+In this module we are going to see how to manipulate, subset and modify tables 
+using `dplyr`, which is also a part of the `tidyverse` package family.
+
+We will learn how to:
+
+- select columns in a table
+- filter a table based on certain conditions
+- combine data manipulation and plotting
+- summarise data across groups
+
+First let's load the `tidyverse` package and read the data that we will work on:
+
+```{r, message = FALSE}
+library(tidyverse)
+
+# Read data using read_csv
+expt1 <- read_csv("../data/burghardt_et_al_2015_expt1.csv")
+```
+
+### Selecting columns with `select()`
+
+To get an idea of data contents we will first check number of dimentsions with 
+``dim()`` and look at the column names with ``names()``.
+
+```{r}
+dim(expt1)
+names(expt1)
+```
+
+This is quite a large dataset, we don't want to look at it all at once. 
+Say, we are interested in just 2 columns for now: `genotype` and `temperature`. 
+
+To select the columns we will use ``select()``:
+
+```{r}
+select(expt1, genotype, temperature)
+```
+
+Let's say we wanted to select the column `genotype` and any column that contains 
+the word "bolt" in its name. `select()` allows you to do this:
+
+```{r}
+select(expt1, genotype, contains("bolt"))
+```
+
+> **Challenge**: can you select all the columns that contain values measured in mm?
+
+
+### Filter rows according to certain conditions with `filter()`
+
+Let's say that we wanted to retain only the rows of our table with data on 
+vernalized plants. This is a job for the `filter()` function.
+
+Before the filtering we need to have a look at the possible values in the 
+`vernalization` column, there are only 2 possibilities: 'V' and 'NV'.
+
+```{r}
+unique(expt1$vernalization)
+```
+
+(**note:** to select a single column from a table we can use the `$` notation 
+like above)
+
+Since we are intereseted in vernalized plants only, we want to filter only those 
+rows with the value "V":
+
+```{r}
+filter(expt1, vernalization == "V")
+```
+
+To set the filtering conditions, several operators can be used:
+
+Operator  | Meaning               | Example
+--------- | --------------------  | ------
+`<`       | less than             | `filter(expt1, days.to.bolt < 20)`
+`<=`      | less than or equal to | `filter(expt1, days.to.bolt <= 20)`
+`>`       | more than             | `filter(expt1, days.to.bolt > 20)`
+`>=`      | more than or equal to | `filter(expt1, days.to.bolt >= 20)`
+`==`      | equal to              | `filter(expt1, days.to.bolt == 20)`
+`!=`      | not equal to          | `filter(expt1, days.to.bolt != 20)`
+`%in%`    | is contained in       | `filter(expt1, genotype %in% c("Col FRI", "Ler-1"))`
+
+
+It is also possible to combine several conditions together using the following operators:
+
+Operator  | Meaning               | Example
+--------- | --------------------  | ------
+`&`       | AND                   | `filter(expt1, days.to.bolt == 20 & genotype == "Ler-1")`
+`|`       | OR                    | `filter(expt1, rosette.leaf.num < 8 | rosette.leaf.num > 100)`
+
+
+We can also identify missing values (`NA`) using the `is.na()` function and its 
+negation (using `!`):
+
+Condition        | Meaning               | Example
+---------------- | --------------------  | ------
+`is.na()`        | is missing            | `filter(expt1, is.na(rosette.leaf.num))`
+`!is.na()`       | is _not_ missing      | `filter(expt1, !is.na(rosette.leaf.num))`
+
+For example, if we want to select individuals that were vernalized and grown 
+under fluctuating temperature conditions, we could do:
+
+```{r, eval = FALSE}
+filter(expt1, vernalization == "V" & fluctuation == "Var")
+```
+
+Another example, if we wanted to select individuals grown with 8h day light or 
+that were late flowering:
+
+```{r, eval = FALSE}
+filter(expt1, day.length == "8" | days.to.bolt > 85)
+```
+
+> **Challenge:**
+> Can you filter the data to keep the following?
+>
+> 1. Samples that are **not in the the Ler background** and that have been 
+> treated with **fluctuating temperature**.
+> 2. Samples that bolted in less than **57 days** and with **less than 40 leaves**
+> 3. Samples of genotype `fca-6` for which `blade.ratio` is not missing
+
+
+### Modify or add new columns with `mutate()`
+
+This is a useful function to add new variables (i.e. new columns) to the table, 
+or to modify existing ones. 
+
+Say, we want to add a new column, `blade.length.cm` which will contain blade length 
+in _cm_ units. We can construct this column by using the already
+existing ``blade.length.mm`` column:
+
+```{r}
+# Create a new table with an extra column in relation to the previous table
+expt1.cm <- mutate(expt1, blade.length.cm = blade.length.mm/10)
+
+# Check that there's now a new column
+colnames(expt1.cm)
+```
+
+We can also modify/create more than one variable at a time, separating them by `,`:
+
+```{r}
+# Make both blade.length and total.leaf.length in cm:
+expt1.cm <- mutate(expt1, 
+                   blade.length.cm = blade.length.mm/10,
+                   total.leaf.length.cm = total.leaf.length.mm/10)
+
+# Check that those columns were now created
+names(expt1.cm)
+```
+
+**Be careful!** If we use the name of an existing variable, it will modify it instead.
+
+
+### Chain commands with `%>%` pipes 
+
+"Pipes" allows us to perform a sequence of operations, without the need for 
+intermediate files (or very complicated nested commands).
+
+Let’s say that we wanted to do several manipulations in our table:
+
+- Create a new column containing total leaf length in cm
+- Filter our data so that it only contains vernalised plants
+- Retain only two columns from our table: genotype and total leaf length in cm
+
+Based on what we’ve learned so far, we could for example do the following:
+
+```{r}
+# Create new column with mutate
+expt1.filtered <- mutate(expt1, 
+                         total.leaf.length.cm = total.leaf.length.mm/10)
+
+# Filter the table to retain only vernalised plants
+expt1.filtered <- filter(expt1.filtered,
+                         vernalization == "V")
+
+# Select only the columns of interest
+expt1.filtered <- select (expt1.filtered,
+                          genotype,
+                          total.leaf.length.cm )
+```
+
+`dplyr` allows us to “chain” several commands using a special “pipe” function `%>%`. 
+This is how the above code could have been written using this trick:
+
+```{r}
+expt1 %>% 
+  mutate(total.leaf.length.cm = total.leaf.length.mm/10) %>% 
+  filter(vernalization == "V") %>% 
+  select(genotype, total.leaf.length.cm)
+```
+
+What the `%>%` pipe does is take the output of the thing on the left-side of it 
+and pass it on to the function that comes after it.
+
+> **Challenge:**
+> Using `%>%` to do the following on `expt1`:
+>
+> - Keep samples that are _not_ in the the Ler background and that have been 
+treated with fluctuating temperature.
+> - Transform the blade length in cm
+> - Keep only the columns containing information about the genotype, blade 
+length (in cm) and bolting information (hint: use `contains()`)
+
+
+
+### Combine all the above with graphs
+
+We can pipe data manipulation to `ggplot` to produce graphs for a subset of 
+the data. This is very useful for interactive data exploration (it avoids having 
+to constantly create new variables with `<-`).
+
+Let's say we want to make a boxplot of the flowering time in function of the 
+temperature fluctuation (like in last session), however only for the vernalised 
+samples. For this, we can use the following code: 
+
+```{r}
+expt1 %>% 
+  filter(vernalization == "V") %>% 
+  ggplot(aes(fluctuation, days.to.flower)) + 
+  geom_boxplot()
+```
+
+> **Challenge:**
+> Can you make a violin plot of the days to flower for the different genotypes 
+that have been growing in short days (8h light)? 
+
+
+### Summarise data with `group_by` and `summarise`
+
+Sometimes we might want to summarise our data into a smaller table.
+
+This kind of operation can be achieved by combining two `dplyr` functions: 
+`group_by()` and `summarise()`. Please note, grouping with `group_by()` doesn't 
+change how the data looks (apart from listing how it's grouped). We can then do
+summaries based on those groupings with `summarise()`.
+
+For example, we can summarise the mean flowering time for each genotype:
+
+```{r}
+expt1 %>% 
+  group_by(genotype) %>% 
+  summarise(mean.days.to.flower = mean(days.to.flower, na.rm = TRUE))
+```
+
+You can see that the output contains two columns: `genotype`, which was the 
+column used to "group" the original table and `mean.days.to.flower`, which was 
+the column we created with the `summarise` function. And there's only 10 rows 
+of this new table, which corresponds to one row for each genotype.
+
+You can group the table by more than one variable, and you can also make more 
+than one summary operation on the table. For example, we might want to calculate 
+both the mean, median and standard deviation of the days to flower of each genotype 
+grown in long and short days:
+
+```{r}
+expt1 %>% 
+  group_by(genotype, day.length) %>% 
+  summarise(mean.days.flower = mean(days.to.flower, na.rm = TRUE),
+            sd.days.flower = sd(days.to.flower, na.rm = TRUE),
+            median.days.flower = median(days.to.flower, na.rm = TRUE))
+```
+
+Now, you can see there's 20 rows in that table. This is because we have one row 
+for each combination of genotype (there's 10 of them) and day.length (8h and 16h).
+
+It is often useful to find how many observations we have for each group. 
+
+In the example above, let's say we wanted to know how many plants we have of 
+each genotype. For this we can use the special function `n()`, which will count 
+the number of rows of each group in the original table:
+
+```{r}
+expt1 %>% 
+  group_by(genotype) %>% 
+  summarise(mean.days.to.flower = mean(days.to.flower, na.rm = TRUE),
+            n.obs = n())
+```
+Please note, you can use ``n()`` only inside ``summarise()`` function. There is
+a similar function, ``count()`` that can be used independently and piped in.
+Because counting the number of observations in a group is such a common operation,
+there's actually a special function, `count()` just to do that one thing:
+
+```{r}
+expt1 %>% 
+  count(genotype, day.length)
+```
+
+Often, we want to apply the same set of summary functions to several variables. 
+For example, in our dataset we might want to group the data by genotype and treatment 
+groups and then calculate the mean and standard deviation for all the traits 
+measured. This kind of operation can be achieved using the `summarise_at` function.
+
+Here is how it works:
+
+```{r}
+# Summarise all traits by treatment groups and genotype
+expt1 %>% 
+  group_by(genotype, background, temperature, fluctuation, day.length, vernalization) %>% 
+  summarise_at(vars(days.to.bolt, days.to.flower, rosette.leaf.num, cauline.leaf.num, blade.length.mm, total.leaf.length.mm, blade.ratio), 
+               funs(mean, sd)) %>% 
+  ungroup()
+```
+
+**Note:** It is important to say that, after you use the `group_by()` function, 
+the table remains grouped by the variables you defined. This means that any operations 
+you do afterwards will use this grouping, which might not be desirable! There is a 
+function called `ungroup()`, which is usually good to use after you finish your 
+operations.
+
+### Saving data to a file
+
+Once we have modified our data we might want to save it to come back to it later. 
+For this we can use the function `write_csv()`
+
+Let’s say that we were to remove some missing data from our data to share 
+it with a collaborator (or later use in R ourselves):
+
+```{r, eval = FALSE}
+expt1.blade.ratio.clean <- expt1 %>% 
+  filter(!is.na(blade.ratio))
+
+#alternatively, we can use drop_na() function that we used in the module02:
+expt1.blade.ratio.clean2 <- expt1 %>% drop_na(blade.ratio)
+
+write_csv(expt1.blade.ratio.clean, path = "../data/expt1_blade_ratio_clean.csv")
+```
+
+
+### Some key points to remember
+
+- `dplyr` has many many useful functions to manipulate tables
+- `dplyr` functions can be “chained” together using the `%>%` pipe
+- We can save tables to text-based files using the `write_*` family of functions
+
+
+### Futher reading and additional resources:
+
+- [dplyr cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
+- [data transformation chapter from 'R for Data Science'](http://r4ds.had.co.nz/transform.html)
+
+
