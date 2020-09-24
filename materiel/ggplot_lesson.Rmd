@@ -35,31 +35,24 @@ library(plotly)
 
 Vous devez aussi vous assurer que le répertoire de travail de R est bien le dossier qui contient le matériel de la lesson. Le chemin vers ce dossier va être différent en fonction de votre système opérateur. 
 
-``` r
-setwd("~/Desktop/ggplot_course//materiel")
+``` {r}
+setwd("~/Desktop/ggplot_course/materiel")
 ```
 
-In this example, our working directory was set to the 
-`module02_data_viz_ggplot/materials` folder.
 
-Now our workspace is ready. 
-The only thing missing is the actual data set that we want to explore and visualize! 
-
-For this lesson we will use a slightly simplified version of a dataset published 
-by [Burghard et al 2015](http://datadryad.org/resource/doi:10.5061/dryad.65d76). 
+Pour cette lesson, nous allons utiliser une version légèrement modifée du jeu de donnée publié par [Burghard et al 2015](http://datadryad.org/resource/doi:10.5061/dryad.65d76). 
 
 
-# Read and check the data
+# Lecture et vérification des données
 
-The simplified version of the data set can be found in the ``module02_data_viz_ggplot/data`` 
-folder (`burghardt_et_al_2015_expt1.csv`). 
+La version simplifiée des données est dans le dossier ``data`` (`burghardt_et_al_2015_expt1.txt`). 
 
-Because our working directory is in `module02_data_viz_ggplot/materials` folder, 
-we read the data like so:
+Comme notre répertoire de travail est le dossier `materiel` , 
+nous devons lire les données ainsi:
 
 ```{r read data}
-# Read data and store it in expt1 object
-expt1 <- read_csv("../data/burghardt_et_al_2015_expt1.csv")
+# Lecture des données et chargement dans l'objet expt1 
+expt1 <- read_tsv("../data/burghardt_et_al_2015_expt1.txt")
 ```
 
 You will notice the `read_csv()` function gives you a message referring to 
@@ -416,7 +409,7 @@ you can represent many dimensions of your data in a single graph!**
 -----
 
 >**Challenge**: Can you produce a graph similar to 
-![Fig. 2B-C of Burghard et al 2015](../materials/Burghard_fig2BC.png). 
+![Fig. 2B-C of Burghard et al 2015](../materiel/Burghard_fig2BC.png). 
 >
 >**Hint**: facet the plot by `day.length` and `temperature` and fill the boxplots by `fluctuation`.
 
