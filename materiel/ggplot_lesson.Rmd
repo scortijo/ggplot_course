@@ -17,7 +17,7 @@ knitr::opts_chunk$set(echo = TRUE)
 Lors de cette formation nous allons apprendre à visualiser des jeux de données tabulaires avec [``ggplot2``](http://ggplot2.org/).
 
 
-## Mise en place
+# Mise en place
 
 Lors de cette formation nous allons ustiliser plusieurs packages qui contienent les fonctions dont nous avons besoin:
 - `tidyverse` qui contient plusiers packages dont `ggplot2`
@@ -43,7 +43,7 @@ setwd("~/Desktop/ggplot_course/materiel")
 Pour cette lesson, nous allons utiliser une version légèrement modifée du jeu de donnée publié par [Burghard et al 2015](http://datadryad.org/resource/doi:10.5061/dryad.65d76). 
 
 
-## Lecture et vérification des données
+# Lecture et vérification des données
 
 La version simplifiée des données est dans le dossier ``data`` (`burghardt_et_al_2015_expt1.txt`). Il s'agit de données pour des phénotypes associés au temmps nécessaire à des plantes de différents génotypes pour fleurir dans différéntes conditions.
 
@@ -154,37 +154,26 @@ expt1 <- drop_na(expt1)
 
 Maintenant que nous avons vérifié la qualité de notre jeu de donnée, nous pouvons générer des graphiques afin d'en apprendre plus sur les données générées par l'expérience. 
 
-For this we will be using the `ggplot2` package, which follows a general scheme 
-termed "grammar or graphics".
-"Grammar of graphics" might sound scary, but just think about them as simple 
-building blocks of a plot. 
-By combining and layering several blocks we can create our dream plot for a 
-dream paper or for a lab meeting.
+Nous allons utiliser le package R `ggplot2`, qui utilie le principe de "grammar or graphics". Il s'agit des briques du graphique. Cette méthode permettant de combiner et superposer différentes briques:
 
-To build a graph we need several blocks:
-
-- data
+- data (données)
 - aesthetics
-- geometric object (type of a plot)
-- statistical transformations
-- coordinate system
-- positional adjustments
+- objet geometrique (type de graphique)
+- transformations statistiques
+- adjustements positionels
 - faceting
 
-Let's focus on the first three: data, aesthetics and geometric object. 
+Les trois premières briques sont essentielles: data, aesthetics et objet geometrique. 
 
-- **data** - well, this is obvious, we need some data
-- **aesthetics** - things you can see and that depend on the data. For example, 
-the position (x and y), colour, shape, line type, size, etc... 
-Aesthetics can be set with `aes()` function. Note, different ``geom_`` 
-objects can understand only a subset of aesthetics. For details, check their 
-respective help (e.g. ``?geom_line``) 
-- **geom_objects** - actual objects that we put on a plot. A plot must have at 
-least one `geom_object`. Examples include:
-    - points (`geom_point` for scatter plots, dot plots)
-    - lines (`geom_line` for trend lines, time series)    
+- **data** - Vos données
+- **aesthetics** - Ce que l'on veux montrer sur le graphique et qui dépend des données. Par exemple ce qui est en x et y, la couleur, forme, type de ligne, taille, etc... 
+Pour cela nous utilisons la fonction `aes()`. 
+- **geom_objects** - les objets que nous voulons dans le graphique. Un graphique doit avoir au moins un `geom_object`, et peut en avoir plusieurs. Par exemple:
+    - points (`geom_point` pour des scatter plots, dot plots)
+    - lignes (`geom_line` pour des tendance, time series)    
 
-You can find more imformation about how to build graphs with `ggplot2` in [this very useful cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf).
+
+Pour plus d'information sur la création de graphique avec `ggplot2`, voir [cette antisèche très utile](https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf).
 
 ## Building a graph with ggplot2
 
