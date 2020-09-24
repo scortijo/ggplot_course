@@ -8,7 +8,7 @@
 
 
 
-**A faire avant le cours:** 
+### A faire avant le cours: 
 Les participants doivent amener leur ordinateur sur lequel R et R studio sont installés.
 [Installer R](https://cran.biotools.fr/),
 [Installer Rstudio](https://rstudio.com/products/rstudio/download/)
@@ -31,7 +31,7 @@ ouvrez R studio taper dans la console R de Rstudio: install.packages("tidyverse"
 ![capture d'écran d'un installation correcte](installation_package_instructions.png)
 
 
-**Prérequis:** 
+### Prérequis
 Les participant doivent déjà avoir des bases de R et savoir utiliser Rstudio. Si ce n'est pas le cas, veuillez vous inscrire pour une formation R avant de venir à la formation ggplot.
 
 

@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r, echo=FALSE, message=FALSE}
 library(tidyverse)
-expt1 <- read_csv("../data/burghardt_et_al_2015_expt1.csv")
+expt1 <- read_tsv("../data/burghardt_et_al_2015_expt1.txt")
 ```
 
 
@@ -20,7 +20,7 @@ expt1 <- read_csv("../data/burghardt_et_al_2015_expt1.csv")
 
 ```{r}
 ggplot(expt1, aes(genotype, days.to.flower)) +
-  geom_boxplot()
+  geom_violin()
 ```
 
 -----------------------

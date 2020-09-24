@@ -45,7 +45,7 @@ Pour cette lesson, nous allons utiliser une version légèrement modifée du jeu
 
 ## Lecture et vérification des données
 
-La version simplifiée des données est dans le dossier ``data`` (`burghardt_et_al_2015_expt1.txt`). 
+La version simplifiée des données est dans le dossier ``data`` (`burghardt_et_al_2015_expt1.txt`). Il s'agit de données pour des phénotypes associés au temmps nécessaire à des plantes de différents génotypes pour fleurir dans différéntes conditions.
 
 Comme notre répertoire de travail est le dossier `materiel` , 
 nous devons lire les données ainsi:
@@ -123,46 +123,36 @@ Bien sur, une recherche sur internet est aussi une solution très efficace pour 
 
 ## Inspection visuelle des données
 
-To get a "birds-eye" view at the data, to identify its structure and potential 
-problems we can simply plot it in 
-[Rothko](https://en.wikipedia.org/wiki/Mark_Rothko)-style using the ``vis_dat()`` 
-function.
+Pour avoir une vue d'ensemble du jeu de données et détecter des problèmes, nous allons ustiliser la fonction  ``vis_dat()``.
 
 ```{r}
 vis_dat(expt1)
 ```
 
-> **Challenge** what is the most common data type in our data set ? 
-Can you spot any potential problems?
+> **Challenge** Quel est le type de données le plus courrant dans le jeu de données ? 
+Y a t'il des problème?
 
 
-## Missing values
+## Données maquantes
 
-You might have noticed that some of the cells are plotted in gray - these indicate 
-missing values. Missing values can occur in a data set when a certain observation 
-was not collected and cause potential problems in the downstream analysis if we 
-are not careful. There are a couple of strategies on how to deal with missing values:
+Le gris dans la figure générée par ``vis_dat()`` sont des données manquantes. Plusieurs stratégies peuvent être utilisée:
 
-- remove rows with missing values completely (the safest option, though can result 
-in substantial data loss);
-- ignore missing values when you can (can you?);
-- impute value based on surrounding values (the most risky).
+- supprimer les lignes qui contiennent des sonnées manquantes (le plus sûr, mais cause une perte de données) 
+- ignorer les données manquantes
 
-To stay on the safe side now, we will simply remove all the rows with missing 
-values from our beloved `expt1` data set.
+
+Pour la lesson, nous allons enlever les lignes contenant des données manquantes.
 
 ```{r drop missing}
 expt1 <- drop_na(expt1)
 ```
 
-> **Challenge** How many rows are left in the data set after we have dropped 
-missing values? 
+> **Challenge** Combien de lignes nous reste-il? 
 
 
 # Plots! Plots! Plots!
 
-Now that we have learned some basics of our data set, we will go straight to 
-plotting to get even more insights about this experiment. 
+Maintenant que nous avons vérifié la qualité de notre jeu de donnée, nous pouvons générer des graphiques afin d'en apprendre plus sur les données générées par l'expérience. 
 
 For this we will be using the `ggplot2` package, which follows a general scheme 
 termed "grammar or graphics".
@@ -184,15 +174,15 @@ To build a graph we need several blocks:
 Let's focus on the first three: data, aesthetics and geometric object. 
 
 - **data** - well, this is obvious, we need some data
-- **geom_objects** - actual objects that we put on a plot. A plot must have at 
-least one `geom_object`. Examples include:
-    - points (`geom_point` for scatter plots, dot plots)
-    - lines (`geom_line` for trend lines, time series)
 - **aesthetics** - things you can see and that depend on the data. For example, 
 the position (x and y), colour, shape, line type, size, etc... 
 Aesthetics can be set with `aes()` function. Note, different ``geom_`` 
 objects can understand only a subset of aesthetics. For details, check their 
-respective help (e.g. ``?geom_line``)    
+respective help (e.g. ``?geom_line``) 
+- **geom_objects** - actual objects that we put on a plot. A plot must have at 
+least one `geom_object`. Examples include:
+    - points (`geom_point` for scatter plots, dot plots)
+    - lines (`geom_line` for trend lines, time series)    
 
 You can find more imformation about how to build graphs with `ggplot2` in [this very useful cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf).
 
@@ -231,7 +221,7 @@ ggplot(expt1, aes(genotype, days.to.flower)) +
   geom_boxplot()
 ```
 
-> **Challenge:** can you make a violin plot instead? (hint: ``?geom_violin``)
+> **Exercice:** can you make a violin plot instead? (hint: ``?geom_violin``)
 
 
 ## Adding multiple layers
@@ -245,7 +235,7 @@ ggplot(expt1, aes(genotype, rosette.leaf.num)) +
   geom_boxplot()
 ```
 
->**Challenge:** can you modify this plot so that the points appear on top of the 
+>**Exercice:** can you modify this plot so that the points appear on top of the 
 boxplots rather than behind them?
 
 
@@ -309,7 +299,7 @@ ggplot(expt1, aes(genotype, days.to.flower)) +
   geom_boxplot(aes(fill = fluctuation), alpha = 0.5)
 ```
 
->**Challenge:** say we are particularly interested in the relationship between 
+>**Exercice:** say we are particularly interested in the relationship between 
 number of rosette leafs and blade length in mm per genotype. 
 >
 > Visualize this relationship with a scatter plot (`geom_point()`)
@@ -345,7 +335,7 @@ ggplot(expt1, aes(blade.length.mm, rosette.leaf.num, colour = genotype)) +
 In the code above, we use `facet_grid()` to define variables that partition our 
 data by rows and columns, using the notation `(rows ~ columns)`.
 
->**Challenge:** In the previous graph, colouring the genotype is redundant with 
+>**Exercice:** In the previous graph, colouring the genotype is redundant with 
 the facetting. Can you think of a more useful way to colour the points?
 
 It is possible to use `facet_grid()` with a single variable:
@@ -371,7 +361,7 @@ ggplot(expt1, aes(blade.length.mm, rosette.leaf.num, colour = fluctuation)) +
     facet_wrap( ~ genotype)
 ```
 
->**Challenge:** Can you modify the previous graph to facet the data by the 
+>**Exercice:** Can you modify the previous graph to facet the data by the 
 `fluctuation` treatment (as rows) and `day.length` (as columns) and colour the 
 points by genotype.
 
@@ -386,7 +376,7 @@ you can represent many dimensions of your data in a single graph!**
 
 -----
 
->**Challenge**: Can you produce a graph similar to 
+>**Exercice**: Can you produce a graph similar to 
 ![Fig. 2B-C of Burghard et al 2015](../materiel/Burghard_fig2BC.png). 
 >
 >**Hint**: facet the plot by `day.length` and `temperature` and fill the boxplots by `fluctuation`.
