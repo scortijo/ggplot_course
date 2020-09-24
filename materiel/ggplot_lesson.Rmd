@@ -223,45 +223,41 @@ ggplot(expt1, aes(genotype, rosette.leaf.num)) +
 
 ## Couleurs!
 
-We can also modify the appearance of our geometry, for example it's colour:
+Changeons la couleur des boxplots:
 
 ```{r}
 ggplot(expt1, aes(genotype, days.to.flower)) +
   geom_boxplot(colour = "red")
 ```
 
-Or perhaps the colour that _fills_ the boxplots:
+Ou la couleur à l'interieur ( _fills_) des boxplots:
 
 ```{r}
 ggplot(expt1, aes(genotype, days.to.flower)) +
   geom_boxplot(colour = "red", fill = "royalblue")
 ```
 
-Or even its transparency:
+Ou même leur transparence:
 
 ```{r}
 ggplot(expt1, aes(genotype, days.to.flower)) +
   geom_boxplot(colour = "red", fill = "royalblue", alpha = 0.5)
 ```
 
-This is all very colourful, but rather gratuitous (what is this colour telling 
-us about the data?!). 
+C'est sympa, mais cela ne nous apporte pas d'information en plus sur les données. 
 
-What if we wanted to colour our boxplots according to which fluctuation 
-treatment the plants were exposed to? In `ggplot2` language, we want to "map" 
-the values of `fluctuation` onto the colour _aesthetic_ of our plot. 
-This should therefore go inside the `aes()` part of our graph:
+Par exemple, ajoutons une couleur qui change en fonction d'un des traitement auquel les plantes ont été exposées (par exemple `fluctuation`). En langage `ggplot2`, nous voulons lier la valeur de la variable `fluctuation` à la couleur dans l' _aesthetic_ du graphique. 
+
+Nous devons donc inclure cette information dans `aes()`:
 
 ```{r}
 ggplot(expt1, aes(genotype, days.to.flower, colour = fluctuation)) +
   geom_boxplot()
 ```
 
-Wow! Can you see what ggplot did for you!? It automatically split the data of 
-each genotype into two groups and coloured them accordingly. 
+Wow! ggplot a automatiquement séparé les données de chaque génotype en deux groupes en fonction de `fluctuation` et leur a attribué une couleur. 
 
-Now, let's say we wanted to visualise the individual data points (not coloured) 
-behind our boxplots (coloured by fluctuation):
+Imaginons que nous voulons ajouter les points pour les valeurs des individus, sans couleur, derrière les boxplots colorés:
 
 ```{r}
 ggplot(expt1, aes(genotype, days.to.flower, colour = fluctuation)) +
@@ -269,11 +265,9 @@ ggplot(expt1, aes(genotype, days.to.flower, colour = fluctuation)) +
   geom_boxplot(alpha = 0.5)
 ```
 
-As it is, the `colour` aesthetic is mapped to _all_ geometries of the graph. This 
-is because we defined it within the `ggplot()` function, which affects every 
-`geom_object` that comes afterwards. 
+Ce n'est pas ce que nous voulons. L'aesthetique `colour` a été lié à _toutes_ les géométries du graphique. C'est parce qu'elle a été définie dans la fonction `ggplot()`, qui affecte tous les `geom_object` qui viennent après.  
 
-But we can also define aesthetics inside each geometry, for example:
+Mais nous pouvons aussi définir l'aesthetique dans chaque geometrie:
 
 ```{r}
 ggplot(expt1, aes(genotype, days.to.flower)) +
@@ -281,14 +275,11 @@ ggplot(expt1, aes(genotype, days.to.flower)) +
   geom_boxplot(aes(fill = fluctuation), alpha = 0.5)
 ```
 
->**Exercice:** say we are particularly interested in the relationship between 
-number of rosette leafs and blade length in mm per genotype. 
+>**Exercice:** sNous voulons étudier la relation entre number of rosette leafs et blade length in mm pour les genotypes. 
 >
-> Visualize this relationship with a scatter plot (`geom_point()`)
-between `blade.length.mm` and `rosette.leaf.num` and colour the points by 
-`genotype`. 
+> Pour cela, dessine un scatter plot (`geom_point()`) entre `blade.length.mm` et `rosette.leaf.num` en colorant les points ne fonction de `genotype`. 
 >
-> What happens if you colour the points by `days.to.bolt`?
+> Que se passe t'il so les points sont colorés en fonction de `days.to.bolt`?
 
 
 ## Facetting
@@ -436,7 +427,7 @@ ggplot(expt1, aes(genotype, days.to.flower, fill = fluctuation)) +
   scale_fill_brewer(palette="Dark2")
 ```
 
-# Homework
+# Et pour finir
 
 Based on the principles outlined in this module, try and build a graph of your own dataset using `ggplot2`.
 
