@@ -427,11 +427,7 @@ ggplot(expt1, aes(genotype, days.to.flower, fill = fluctuation)) +
   scale_fill_brewer(palette="Dark2")
 ```
 
-# Et pour finir
 
-Based on the principles outlined in this module, try and build a graph of your own dataset using `ggplot2`.
-
-If you encounter any difficulties, we will discuss them in the next module!
 
 # Extras
 
