@@ -43,7 +43,7 @@ setwd("~/Desktop/ggplot_course/materiel")
 Pour cette lesson, nous allons utiliser une version légèrement modifée du jeu de donnée publié par [Burghard et al 2015](http://datadryad.org/resource/doi:10.5061/dryad.65d76). 
 
 
-# Lecture et vérification des données
+## Lecture et vérification des données
 
 La version simplifiée des données est dans le dossier ``data`` (`burghardt_et_al_2015_expt1.txt`). 
 
@@ -51,7 +51,7 @@ Comme notre répertoire de travail est le dossier `materiel` ,
 nous devons lire les données ainsi:
 
 ```{r read data}
-# Lecture des données et chargement dans l'objet expt1 
+# Lecture des données et chargement dans la variable (objet) expt1 
 expt1 <- read_tsv("../data/burghardt_et_al_2015_expt1.txt")
 ```
 
@@ -60,86 +60,68 @@ La fonction `read_csv()` imprime un message indiquant quel type de donnée est c
 Dans noter cas, certaines colonnes contiennes des données de type "character" (du texte) et d'autres des données numériques ("double" en présence de décimale, "integer" en absence de décimale).
 
 
-## Vérification des données
-
-To get a glimpse of the data, we can type the name of the variable we have stored 
-it in (`expt1`).
+Pour regarder rapidement les données, tapez le nom de la variable où sont les données (`expt1`).
 
 ```{r head expt1}
 expt1
 ```
 
-This shows you the first 10 lines the data and only a few columns that fit 
-on the screen.
+Cela va nous montrer les 10 premières lignes du tableau ainsi que les colonnes qui rentrent dans l'écran. 
 
-> **Challenge:** How many rows and columns does our data set contain?
+> **Challenge:** Combien y a t'il de lignes et colonnes dans les données?
 
-There are other ways to visually inspect your data:
-
-- with the ``View()`` function you can have access to an interactive table, 
-where you can sort, filter and search your data set with keywords (this does 
-not modify your original variable):
+Une autre option est d'utiliser la fonction  ``View()`` pour accéder à une table intéractive où il est possible de trier et filtrer les données sans modifier la variable:
 
 ```{r View, eval = FALSE}
 View(expt1)
 ```
 
-- with the ``glimpse()`` function you can get access to the structure of your data:
+- La fonction ``glimpse()`` permet d'avoir une idée de la structure des données:
 
 ```{r str}
 glimpse(expt1)
 ```
 
-> **Challenge** what types of variables do we have in our data set? 
-What could they mean?  What type of variable is "bolt"? How about "temperature"?
+> **Challenge** Quel est le type des variables dans les données ? 
 
-- ``dim()`` returns basic dimensions of your data set, i.e. numbers of rows and columns.
+- ``dim()`` indique les dimensions du jeu de données (nombre de lignes et colonnes).
 
 ```{r dim}
 dim(expt1)
 ```
 
-- finally, for numeric variables it is convenient to use ``summary()`` function, 
-which generates basic stats for each numeric column.
+- Pour les données numériques, la fonction ``summary()`` permet d'obtenir des stats de base pour chaque colonne.  
 
 ```{r summary}
 summary(expt1)
 ```
 
-So far, we have already used a handful of R functions, though we have just barely started:
+Nous avons déjà utilisé de noubreuses fonctions:
 
 - ``install.packages()``
 - ``library()``
-- ``read_csv()``
+- ``read_tsv()``
 - ``View()``
 - ``glimpse()``
 - ``summary()``
 - ``dim()``
 
-Of course, it is difficult to memorize all the function names, what they are 
-doing and how you should use them. 
-Luckily, R has very convenient built-in help. 
-To use it, type name of a function or any other object you are interested it 
-preceded by `?`
+Il est bien sûr difficile de ce souvenir du nom de toutes ces fonctions, ce quelles font et comment les utiliser. 
+Heuresement, pour nous aider, une aide est disponible dans R en tapant le nom d'une fonction précédé de `?`
 
 ```{r get help}
 ?summary
 ```
 
-R help might seem cryptic at first, but you will get used to it, you can always 
-scroll down to the 'examples' section and try running some of them yourself 
-to get an idea of what the function in question is capable of.
 
-Also, a web-search is also just as effective (if not more!) as looking at the 
-help pages.
+Bien sur, une recherche sur internet est aussi une solution très efficace pour trouver de l'aide! 
 
-> **Challenge** what does the ``round()`` function do? 
+> **Challenge** que fait la fonction ``head()`` ? 
 
-> **Challenge** can you specifically look at the end of your data instead 
-of its beginning? How would you do it in R? (hint: ``?tail``)
+> **Challenge** Comment regarder les dernières lignes de le notre jeu de donnée? (indice: ``?tail``)
 
 
-## Visual inspection of your data
+## Inspection visuelle des données
 
 To get a "birds-eye" view at the data, to identify its structure and potential 
 problems we can simply plot it in 
