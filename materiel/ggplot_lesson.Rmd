@@ -207,10 +207,10 @@ ggplot(expt1, aes(genotype, days.to.flower)) +
 > **Exercice:** Pouvez vous dessiner un violin plot? (indice: ``?geom_violin``)
 
 
-## Ajouter plusieurs couches
+## Ajout de plusieurs couches
 
-Let's now layer a couple of ``geom_objects`` on the same plot. 
-Say, we want to have points for the individual values together with our boxplots:
+Nous allons maintenant ajouter d'autres ``geom_objects`` au même graphique. 
+Par exemple, des points pour les valeurs des individus en plus du boxplot:
 
 ```{r}
 ggplot(expt1, aes(genotype, rosette.leaf.num)) +
@@ -218,11 +218,10 @@ ggplot(expt1, aes(genotype, rosette.leaf.num)) +
   geom_boxplot()
 ```
 
->**Exercice:** can you modify this plot so that the points appear on top of the 
-boxplots rather than behind them?
+>**Exercice:** Modifiez le graphique pour que les points soient devant, plutôt que derrière, les boxplots. 
 
 
-## Colours!
+## Couleurs!
 
 We can also modify the appearance of our geometry, for example it's colour:
 
