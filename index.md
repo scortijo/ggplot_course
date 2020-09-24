@@ -46,7 +46,7 @@ Le jeu de données que nous allons utiliser en exemple à été publié par
 ### Matériel du cours
 
 
-[Cours](materials/ggplot_lesson.html)
+[Cours](materiel/ggplot_lesson.html)
 
 
 
