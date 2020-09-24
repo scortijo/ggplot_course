@@ -175,45 +175,39 @@ Pour cela nous utilisons la fonction `aes()`.
 
 Pour plus d'information sur la création de graphique avec `ggplot2`, voir [cette antisèche très utile](https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf).
 
-## Building a graph with ggplot2
+## Faire un graphique avec ggplot2
 
-Everyone (except Excel) likes boxplots, so we will start by plotting `days.to.flower` 
-variable measured for different genotypes. 
+Commençons avec un boxplot: Plottons le `days.to.flower` pour les différents génotypes. 
 
-The `ggplot()` function initialises a plot. At the very minimum it needs 
-a dataset to plot:
+La fonction `ggplot()` permet de commencer le graphique. Il faut aussi indiquer les données à utiliser:
 
 ```{r}
 ggplot(expt1)
 ```
 
-But this simply produces a blank (well, grey) canvas! 
+Mais cela ne produit qu'un canevas grise! 
 
-We haven't told `ggplot` what _aesthetics_ (this is `ggplot2` terminology) we 
-want it to map onto this blank canvas. 
-For a boxplot we need to tell it what our _x_ and _y_ variables are.
+Il nous manque des briques. En l'occurence nous devons indiquer quelle _aesthetics_ (c'est la terminologie de `ggplot2`) nous voulons sur ce canevas gris. 
+Nous devons indiquer quelles sont les variables  _x_ et _y_ du boxplot.
 
 ```{r}
 ggplot(expt1, aes(x = genotype, y = days.to.flower))
 ```
  
-As you can see, `ggplot` "mapped" the values in the `genotype` and `days.to.flower` 
-variables of our table to the _x_ and _y_ aesthetics of the plot. 
+`ggplot` indique maintenant les variables `genotype` et `days.to.flower` 
+de nos données sur les axes _x_ and _y_ du graphique. 
 
-But this is still quite an empty plot, because we haven't told `ggplot` what 
-_geometries_ we want it to draw in the canvas. In our case, we want a boxplot, 
-which we can add on top of the created canvas by adding (literally `+`) 
-a ``geom_boxplot()``:
+Mais toujours pas de graphique. C'est parce que nous pas indiqué à  But this is still `ggplot` quelle _geometrie_ nous voulons dessiner sur le canevas. Pour faire un boxplot, nous ajoutons au canevas (littéralement avec un `+`) ``geom_boxplot()``:
 
 ```{r}
 ggplot(expt1, aes(genotype, days.to.flower)) +
   geom_boxplot()
 ```
 
-> **Exercice:** can you make a violin plot instead? (hint: ``?geom_violin``)
+> **Exercice:** Pouvez vous dessiner un violin plot? (indice: ``?geom_violin``)
 
 
-## Adding multiple layers
+## Ajouter plusieurs couches
 
 Let's now layer a couple of ``geom_objects`` on the same plot. 
 Say, we want to have points for the individual values together with our boxplots:
