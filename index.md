@@ -44,13 +44,9 @@ Le jeu de données que nous allons utiliser en exemple à été publié par
 
 ### Matériel du cours
 
-[Script de départ](materials/ggplot_lesson.html)
 
+[Cours](materials/ggplot_lesson.html)
 
-[Script Final](materials/ggplot_lesson.html)
-
-
-[Exercices](materials/ggplot_lesson.html)
 
 ([Solution des exercices](materials/ggplot_exercise_solutions.html))
 
