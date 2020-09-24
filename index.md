@@ -27,7 +27,7 @@ Pour cela:
 
 ouvrez R studio taper dans la console R de Rstudio: install.packages("tidyverse")
 
-[capture d'écran d'un installation correcte](installation_package_instructions.png)
+[capture d'écran d'un installation correcte](installation_package_instructions.png){:height="50%" width="50%"}
 
 
 **Prérequis:** 
