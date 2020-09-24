@@ -17,14 +17,13 @@ knitr::opts_chunk$set(echo = TRUE)
 Lors de cette formation nous allons apprendre à visualiser des jeux de données tabulaires avec [``ggplot2``](http://ggplot2.org/).
 
 
-## Setting things up
+## Mise en place
 
-In this lesson we are going to use some R packages containing functions we need:
+Lors de cette formation nous allons ustiliser plusieurs packages qui contienent les fonctions dont nous avons besoin:
+- `tidyverse` qui contient plusiers packages dont `ggplot2`
+- `visdat`  qui permet une représentation rapide des données
+- `plotly` pour faire des graphiques interactifs
 
-- `tidyverse` which contains a collection of several packages for data manipulation 
-and visualization (including the `ggplot2` package)
-- `visdat` to give you a quick and visual representation of your data
-- `plotly` to produce interactive graphics
 
 You can install packages by using the ``install.packages()`` function. 
 For example, if you wanted to install the `plotly` package you would 
