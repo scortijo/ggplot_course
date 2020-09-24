@@ -15,13 +15,14 @@ Les participants doivent amener leur ordinateur sur lequel R et R studio sont in
 
 Dans chaque cas, télécharger la version pour votre système opérateur (Mac, Windows ou Linux) et installer les programmes normalement.
 
-Vous devez aussi avoir le package **tidyverse** installé. 
+Vous devez aussi avoir les packages `tidyverse`, `visdat` et `plotly`  installé. 
 Pour cela:
 1. Assurez vous d'avoir acces à internet
 2. Ouvrez Rstudio
-3. Dans la "console"" (panel en haut à gauche), `tapez install.packages("tidyverse")`
-4. Assurez vous que l'installation a fonctionné en tapant `library(tidyverse)`
-5. Le message affiché doit être similaire à la capture d'écran ci-dessous. Si vous avez un message du type: you get a message, such as: 
+3. Dans la "console"" (panel en haut à gauche), tapez `install.packages("tidyverse")` puis enter
+4. De même tapez `install.packages("visdat")` et enter puis enfin `install.packages("plotly")` et enter
+4. Assurez vous que l'installation a fonctionné en tapant `library(tidyverse)` (puis faites la même chose avec `visdat` et `plotly`)
+5. Le message affiché doit être similaire à la capture d'écran ci-dessous. Si vous avez un message du type: 
 "Error in library(tidyverse): there is no package called 'tidyverse'"
 **contantez un des instructeur avant le cours**.
 

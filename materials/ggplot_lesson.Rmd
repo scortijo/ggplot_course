@@ -1,5 +1,5 @@
 ---
-title: SLCU R Course
+title: Formation ggplot2
 output:
   html_document:
     toc: yes
@@ -10,12 +10,11 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-[back to course home](https://tavareshugo.github.io/slcu_r_course/)
+[Retour à la page d'accueil](https://scortijo.github.io/ggplot_course/)
 
-# Data Visualization with R
+# Visualisation de données avec ggplot2
 
-In this lesson we will learn how to explore tabular data, perform basic sanity 
-checks and do visualizations with [``ggplot2``](http://ggplot2.org/).
+Lors de cette formation nous allons apprendre à visualiser des jeux de données tabulaires avec [``ggplot2``](http://ggplot2.org/).
 
 
 ## Setting things up
