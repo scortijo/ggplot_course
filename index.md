@@ -24,24 +24,9 @@ Les participant doivent déjà avoir des bases de R et savoir utiliser Rstudio. 
 
 ### Description
 
-This is a series of short and modular workshops where you will learn how to analyse 
-data using the statistical software _R_. 
-Each module will be 1h30m - 2h long and we will cover topics such as:
+Ce cours va vous apprendre comment utiliser le package **ggplot** de **R** afin de réaliser des graphiques, en partant des données tabulaires (ce que vous pourriez créer en utilisant excel).
 
-- How to prepare your data to maximise the number of questions you 
-can ask from it
-- How to visualise data
-- How to filter and summarise your data efficiently
-
-We specifically focus on tabular data (like you would produce in a spreadsheet) 
-and aim to very quickly teach you how to produce high-quality graphs to 
-enable efficiently data exploration.
-
-No prior knowledge of _R_ is assumed. Even if you already know _R_, this might 
-be useful if you want to refresh your memory or learn about specific packages 
-that we will cover (`ggplot2` for plotting and `dplyr` for manipulating tables).
-
-As an example dataset we will be using real data published by 
+Le jeu de données que nous allons utiliser en exemple à été publié par 
 [Burghardt .. Schmitt (2015)](https://doi.org/10.1111/nph.13799). 
 
 
