@@ -51,7 +51,11 @@ Le jeu de données que nous allons utiliser en exemple à été publié par
 
 ### Ressources 
 
+
 [ggplot cheat sheet](https://rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf)
+
+[réorganisation de données cheat sheet](module01_data_and_files/materials/data_organisation.md)
+[ggplot cheat sheet](https://rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
 [réorganisation de données cheat sheet](https://rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
 
 
