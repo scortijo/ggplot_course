@@ -7,6 +7,18 @@
 [Isabelle Sanchez](mailto:Isabelle.Sanchez@inrae.fr)
 
 
+### Description
+
+Ce cours va vous apprendre comment réaliser des graphique sur **R** en utilisant **ggplot2**, en partant de données tabulaires (ce que vous pourriez créer en utilisant excel).
+
+Le jeu de données que nous allons utiliser en exemple à été publié par 
+[Burghardt .. Schmitt (2015)](https://doi.org/10.1111/nph.13799). 
+
+
+### Prérequis
+Les participant doivent déjà avoir des bases de R et savoir utiliser Rstudio. Si ce n'est pas le cas, veuillez vous inscrire pour une formation R avant de venir à la formation ggplot.
+
+
 
 ### A faire avant le cours: 
 Les participants doivent amener leur ordinateur sur lequel R et R studio sont installés.
@@ -30,17 +42,6 @@ ouvrez R studio taper dans la console R de Rstudio: install.packages("tidyverse"
 
 ![capture d'écran d'un installation correcte](installation_package_instructions.png)
 
-
-### Prérequis
-Les participant doivent déjà avoir des bases de R et savoir utiliser Rstudio. Si ce n'est pas le cas, veuillez vous inscrire pour une formation R avant de venir à la formation ggplot.
-
-
-### Description
-
-Ce cours va vous apprendre comment réaliser des graphique sur **R** en utilisant **ggplot2**, en partant de données tabulaires (ce que vous pourriez créer en utilisant excel).
-
-Le jeu de données que nous allons utiliser en exemple à été publié par 
-[Burghardt .. Schmitt (2015)](https://doi.org/10.1111/nph.13799). 
 
 
 ### Matériel du cours
