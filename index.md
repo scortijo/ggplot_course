@@ -48,8 +48,6 @@ Le jeu de données que nous allons utiliser en exemple à été publié par
 [Cours](materials/ggplot_lesson.html)
 
 
-([Solution des exercices](materials/ggplot_exercise_solutions.html))
-
 
 ### Ressources 
 
