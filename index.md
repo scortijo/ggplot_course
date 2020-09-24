@@ -21,11 +21,11 @@ Les participant doivent déjà avoir des bases de R et savoir utiliser Rstudio. 
 
 
 ### A faire avant le cours: 
-Les participants doivent amener leur ordinateur sur lequel R et R studio sont installés.
-[Installer R](https://cran.biotools.fr/),
+Les participants doivent amener leur ordinateur sur lequel R et R studio sont installés:
+[Installer R](https://cran.biotools.fr/);
 [Installer Rstudio](https://rstudio.com/products/rstudio/download/)
 
-Dans chaque cas, télécharger la version pour votre système opérateur (Mac, Windows ou Linux) et installer les programmes normalement.
+Dans chaque cas, téléchargez la version pour votre système opérateur (Mac, Windows ou Linux) et installez les programmes normalement.
 
 Vous devez aussi avoir les packages `tidyverse`, `visdat` et `plotly`  installé. 
 Pour cela:
@@ -37,8 +37,6 @@ Pour cela:
 5. Le message affiché doit être similaire à la capture d'écran ci-dessous. Si vous avez un message du type: 
 "Error in library(tidyverse): there is no package called 'tidyverse'"
 **contantez un des instructeur avant le cours**.
-
-ouvrez R studio taper dans la console R de Rstudio: install.packages("tidyverse")
 
 ![capture d'écran d'un installation correcte](installation_package_instructions.png)
 
