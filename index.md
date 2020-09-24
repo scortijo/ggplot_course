@@ -44,17 +44,20 @@ Le jeu de données que nous allons utiliser en exemple à été publié par
 
 ### Matériel du cours
 
-[Script](module02_data_viz_ggplot/materials/ggplot_lesson.html)
+[Script de départ](materials/ggplot_lesson.html)
 
 
-[Exercices](module02_data_viz_ggplot/materials/ggplot_lesson.html)
+[Script Final](materials/ggplot_lesson.html)
 
-([Solution des exercices](module02_data_viz_ggplot/materials/ggplot_exercise_solutions.html))
+
+[Exercices](materials/ggplot_lesson.html)
+
+([Solution des exercices](materials/ggplot_exercise_solutions.html))
 
 
 ### Ressources 
 
-[Gallery de graphiques pouvant être réalisé avec ggplot2](https://www.r-graph-gallery.com/)
+[Gallerie de graphiques pouvant être réalisé avec ggplot2](https://www.r-graph-gallery.com/)
 
 [ggplot2 cheat sheet](https://rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf)
 
