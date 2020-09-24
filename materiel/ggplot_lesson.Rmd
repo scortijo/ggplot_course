@@ -55,16 +55,12 @@ nous devons lire les données ainsi:
 expt1 <- read_tsv("../data/burghardt_et_al_2015_expt1.txt")
 ```
 
-You will notice the `read_csv()` function gives you a message referring to 
-a "column specification". This is referring to what type of data it thinks 
-each of your columns contains. 
+La fonction `read_csv()` imprime un message indiquant quel type de donnée est contenue dans les differentes colonnes du fichier. 
 
-In this case, some columns contain "character"-type data (i.e. text) and others 
-contain "numeric"-type data (which can be "integer" if they have no decimal 
-points, or "double" if they do).
+Dans noter cas, certaines colonnes contiennes des données de type "character" (du texte) et d'autres des données numériques ("double" en présence de décimale, "integer" en absence de décimale).
 
 
-## Inspecting the data - quality control
+## Vérification des données
 
 To get a glimpse of the data, we can type the name of the variable we have stored 
 it in (`expt1`).
