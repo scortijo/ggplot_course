@@ -25,16 +25,7 @@ Lors de cette formation nous allons ustiliser plusieurs packages qui contienent 
 - `plotly` pour faire des graphiques interactifs
 
 
-You can install packages by using the ``install.packages()`` function. 
-For example, if you wanted to install the `plotly` package you would 
-do:
-
-``` r
-install.packages("plotly")
-```
-
-Once the packages are installed, we can load them in the current R session 
-with the ``library()`` function: 
+Vous avez normalement déjà installé ces packages. Pour vérifier qu'ils sont bien installé, utilisez la fonction ``library()`` : 
 
 ```{r load packages, eval = TRUE, message = FALSE}
 library(tidyverse)
@@ -42,8 +33,7 @@ library(visdat)
 library(plotly)
 ```
 
-You should also set your working directory to the folder containing this 
-lesson's materials. This will vary depending on your operating system. 
+Vous devez aussi vous assurer que le répertoire de travail de R est bien le dossier qui contient le matériel de la lesson. Le chemin vers ce dossier va être différent en fonction de votre système opérateur. 
 
 ``` r
 setwd("~/Desktop/slcu_r_course/module02_data_viz_ggplot/materials")
