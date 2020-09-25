@@ -339,19 +339,17 @@ En conclusion, **il est possible de représenter de nombreuses informations en c
 
 -----
 
->**Exercice**: Reproduisez le graphique 
+>**Exercice**: Reproduisez le graphique suivant (ou quelque chose d'approchant): 
 ![Fig. 2B-C of Burghard et al 2015](../materiel/Burghard_fig2BC.png). 
 >
 >**Indice**: facet le graphique avec `day.length` et `temperature` rempli les boxplot en fonction de `fluctuation`.
 
 
-## Interactivity!
+## Interactivité!
 
-But even this is not the limit. We can easily turn our plots into 
-interactive ones using the `plotly` package. 
+Pour aller plus loin, il est même possible de créer des graphiques intéractifs en utilsant le package `plotly`.  
 
-First we store our plot in a variable and then pass it to the special `ggplotly()`
-function.
+Il faut d'abord mettre le graphique dans une variable, puis de l'utiliser dans la fonction `ggplotly()`.
 
 
 ```{r go interactive}
@@ -367,16 +365,12 @@ ggplotly(p1)
 
 ## Themes
 
-Every element of a ggplot is modifiable. This is out of the scope for this 
-module, but here's a few examples and references.
+Tous les élépments d'un ggplot sont modifiable. Les themes permettent de modifier l'apparence du graphique. Ce n'est pas le sujet de cette formation, mais voici quelques exemples. 
 
-Themes modify the overall appearance of the plot. Some come with `ggplot2` and 
-many others can be obtained from other packages such as
-[`ggthemes`](https://cran.r-project.org/web/packages/ggthemes/vignettes/ggthemes.html) 
-(which also has some additional geom objects).
+
 
 ```{r}
-# Example of built-in ggplot2 themes
+# Example de thèmes existants dans ggplot2 
 ggplot(expt1, aes(genotype, days.to.flower)) +
   geom_boxplot() +
   theme_bw() +
@@ -394,12 +388,10 @@ ggplot(expt1, aes(genotype, days.to.flower)) +
 ```
 
 
-The `theme()` function is used to modify individual elements of the plot. 
-The possibilities are so vast that the easiest way is to do a web-search for 
-your intended purpose. 
+La fonction `theme()` peut être utilisée pour modifier des éléments en oarticulier du thème. Il y a tellement de possibilité que le mieux est de rechercher sur internet la modification que vous voulez faire. 
 
-For example, a web-search for "vertical labels x axis ggplot2" returns as one of 
-the first hits [this solution](https://stackoverflow.com/questions/1330989/rotating-and-spacing-axis-labels-in-ggplot2): 
+
+Par exemple, en recherchant "vertical labels x axis ggplot2" nous obtenons [cette solution](https://stackoverflow.com/questions/1330989/rotating-and-spacing-axis-labels-in-ggplot2): 
 
 ```{r}
 ggplot(expt1, aes(genotype, days.to.flower)) +
