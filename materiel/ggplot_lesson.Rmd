@@ -399,9 +399,8 @@ ggplot(expt1, aes(genotype, days.to.flower)) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 
-Or searching for "altering plot colours ggplot2" returns 
-[this page](http://www.sthda.com/english/wiki/ggplot2-colors-how-to-change-colors-automatically-and-manually), 
-which somewhere gives an interesting solution:
+Rechercher "altering plot colours ggplot2" donne 
+[ceci](http://www.sthda.com/english/wiki/ggplot2-colors-how-to-change-colors-automatically-and-manually), qui apporte cette solution:
 
 ```{r}
 ggplot(expt1, aes(genotype, days.to.flower, fill = fluctuation)) +
@@ -413,21 +412,20 @@ ggplot(expt1, aes(genotype, days.to.flower, fill = fluctuation)) +
 
 # Extras
 
-Some other packages that add functionality to `ggplot2`:
+D'autres packages qui peuvent apporter un plus à `ggplot2`:
 
 - [`gridExtra`](https://cran.r-project.org/web/packages/gridExtra/vignettes/arrangeGrob.html) 
-or [`patchwork`](https://github.com/thomasp85/patchwork) 
-to combine several plots together
+ou [`patchwork`](https://github.com/thomasp85/patchwork) 
+pour combiner des graphiques ensemble
 - [`ggthemes`](https://cran.r-project.org/web/packages/ggthemes/vignettes/ggthemes.html) 
-to add extra themes and geometries
+pour ajouter des thèmes et géométries en plus
 - [`ggridges`](https://cran.r-project.org/web/packages/ggridges/vignettes/introduction.html) 
-to produce "ridge" plots
-- [`GGally`](https://ggobi.github.io/ggally/) for automatically plotting 
-relationships between data
+pour faire des graphiques "ridge" 
+- [`GGally`](https://ggobi.github.io/ggally/) pour représenter automatiquement les relations entre des données  
 
-# Useful links
+# Lien utilses
 
-- [Other cheat sheets!](https://www.rstudio.com/resources/cheatsheets/)
+- [D'autres antisèches!](https://www.rstudio.com/resources/cheatsheets/)
 
 -------
 

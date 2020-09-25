@@ -53,9 +53,9 @@ Pour cela:
 
 [Gallerie de graphiques pouvant être réalisé avec ggplot2](https://www.r-graph-gallery.com/)
 
-[ggplot2 cheat sheet](https://rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf)
+[antisèche pour ggplot2](https://rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf)
 
-[réorganisation de données cheat sheet](module01_data_and_files/materials/data_organisation.md)
+[antisèche pour la réorganisation de données](module01_data_and_files/materials/data_organisation.md)
 
 
 
