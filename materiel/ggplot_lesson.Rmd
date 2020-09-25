@@ -286,12 +286,12 @@ ggplot(expt1, aes(genotype, days.to.flower)) +
 
 Souvent trop de variables, ou de groupes, sont dans nos données pour pouvoir uniquement utiliser les couleurs pour les discriminer.  
 
-C'est le cas par example du scatterplot produit dans l'exercice précédent, où les points sont colorés en fonction du génotype. Il est difficile de bien discerner les données pour chaque génotype car ils sont très raprochés. L'idéal serait d'avoir un scatterplort par génotype.   
+C'est le cas par example du scatterplot produit dans l'exercice précédent, où les points sont colorés en fonction du génotype. Il est difficile de bien discerner les données pour chaque génotype car ils sont très rapprochés. L'idéal serait d'avoir un scatterplot par génotype.   
 
-Ceci ets assez facile à faire avec`ggplot2`, il suffit d'ajouter une couche au graphique appelée "facet":
+Ceci est assez facile à faire avec`ggplot2`, il suffit d'ajouter une couche au graphique appelée "facet":  
 
-- `facet_grid()` - qui permet d'organiser les panneaux du graphique en lignes et/ou colonnes
-- `facet_wrap()` - qui permet d'organiser les panneaux du graphique à la suite les uns des autres qui revient à la ligne après un certain nombre de panneaux. 
+- `facet_grid()` - qui permet d'organiser les panneaux du graphique en lignes et/ou colonnes  
+- `facet_wrap()` - qui permet d'organiser les panneaux du graphique à la suite les uns des autres qui reviennent à la ligne après un certain nombre de panneaux.  
 
 Voyons comment `facet_grid()` fonctionne:
 
@@ -308,12 +308,12 @@ Dans `facet_grid()`, nous utilisons la notation `(ligne ~ colonne)` pour definir
 Il est possible de ne préciser qu'une variable dans `facet_grid()` :
 
 ```{r}
-# Facet by rows
+# Faceter en ligne
 ggplot(expt1, aes(blade.length.mm, rosette.leaf.num, colour = fluctuation)) +
     geom_point() +
     facet_grid(genotype ~ .)
 
-# Facet by columns
+# Faceter en colonne
 ggplot(expt1, aes(blade.length.mm, rosette.leaf.num, colour = fluctuation)) +
     geom_point() +
     facet_grid(. ~ genotype)
@@ -342,18 +342,18 @@ En conclusion, **il est possible de représenter de nombreuses informations en c
 >**Exercice**: Reproduisez le graphique suivant (ou quelque chose d'approchant): 
 ![Fig. 2B-C of Burghard et al 2015](../materiel/Burghard_fig2BC.png). 
 >
->**Indice**: facet le graphique avec `day.length` et `temperature` rempli les boxplot en fonction de `fluctuation`.
+>**Indice**: facet le graphique avec `day.length` et `temperature` et colorer l'intérieur des boxplot en fonction de `fluctuation`.
 
 
 ## Interactivité!
 
 Pour aller plus loin, il est même possible de créer des graphiques intéractifs en utilsant le package `plotly`.  
 
-Il faut d'abord mettre le graphique dans un objet, puis de l'utiliser dans la fonction `ggplotly()`.
+Il faut d'abord mettre le graphique dans un objet, puis d'utiliser cet objet dans la fonction `ggplotly()`.
 
 
 ```{r go interactive}
-# Garder le graphique dans l'objet p1
+# Mettre le graphique dans l'objet p1
 p1 <- ggplot(expt1, aes(blade.length.mm, rosette.leaf.num, colour = fluctuation)) + 
   geom_point() +
   facet_wrap(~genotype)
@@ -365,7 +365,7 @@ ggplotly(p1)
 
 ## Themes
 
-Tous les élépments d'un ggplot sont modifiable. Les themes permettent de modifier l'apparence du graphique. Ce n'est pas le sujet de cette formation, mais voici quelques exemples. 
+Tous les élépments d'un ggplot sont modifiables. Les themes permettent de modifier l'apparence du graphique. Ce n'est pas le sujet de cette formation, mais voici quelques exemples. 
 
 
 
@@ -388,7 +388,7 @@ ggplot(expt1, aes(genotype, days.to.flower)) +
 ```
 
 
-La fonction `theme()` peut être utilisée pour modifier des éléments en oarticulier du thème. Il y a tellement de possibilité que le mieux est de rechercher sur internet la modification que vous voulez faire. 
+La fonction `theme()` peut être utilisée pour modifier des éléments en particulier du graphique. Il y a tellement de possibilité que le mieux est de rechercher sur internet la modification que vous voulez faire.  
 
 
 Par exemple, en recherchant "vertical labels x axis ggplot2" nous obtenons [cette solution](https://stackoverflow.com/questions/1330989/rotating-and-spacing-axis-labels-in-ggplot2): 
@@ -423,7 +423,7 @@ pour ajouter des thèmes et géométries en plus
 pour faire des graphiques "ridge" 
 - [`GGally`](https://ggobi.github.io/ggally/) pour représenter automatiquement les relations entre des données  
 
-# Lien utilses
+# Liens utiles
 
 - [D'autres antisèches!](https://www.rstudio.com/resources/cheatsheets/)
 

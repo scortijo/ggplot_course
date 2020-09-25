@@ -45,7 +45,11 @@ Pour cela:
 ### Matériel de la formation
 
 
-[Scripts et explications](materiel/ggplot_lesson.html)
+[Scripts et explications](materiel/ggplot_lesson.html)  
+
+
+[Solution des exercices](materiel/ggplot_exercise_solutions.html)
+
 
 
 

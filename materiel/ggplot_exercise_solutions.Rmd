@@ -6,9 +6,9 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# [SLCU R Course](https://tavareshugo.github.io/slcu_r_course/)
+# [Retour à la page d'accueil](https://scortijo.github.io/ggplot_course/)
 
-## Data Visualization with R - exercise solutions
+## Formation ggplot2 - solutions des exercices
 
 ```{r, echo=FALSE, message=FALSE}
 library(tidyverse)
@@ -16,7 +16,7 @@ expt1 <- read_tsv("../data/burghardt_et_al_2015_expt1.txt")
 ```
 
 
-> **Challenge:** can you make a violin plot instead? (hint: ``?geom_violin``)
+> **Exercice:** Pouvez vous dessiner un violin plot? (indice: ``?geom_violin``)
 
 ```{r}
 ggplot(expt1, aes(genotype, days.to.flower)) +
@@ -25,8 +25,7 @@ ggplot(expt1, aes(genotype, days.to.flower)) +
 
 -----------------------
 
->**Challenge:** can you modify this plot so that the points appear on top of the 
-boxplots rather than behind them?
+>**Exercice:** Modifiez le graphique pour que les points soient devant plutôt que derrière les boxplots. 
 
 ```{r}
 ggplot(expt1, aes(genotype, rosette.leaf.num)) +
@@ -36,14 +35,11 @@ ggplot(expt1, aes(genotype, rosette.leaf.num)) +
 
 ----------------------
 
->**Challenge:** say we are particularly interested in the relationship between 
-number of rosette leafs and blade length in mm per genotype. 
+>**Exercice:** Nous voulons étudier la relation entre le nombre de feuille de rosette et la longueur la limbe des feuilles (en mm) pour les genotypes. 
 >
-> Visualize this relationship with a scatter plot (`geom_point()`)
-between `blade.length.mm` and `rosette.leaf.num` and colour the points by 
-`genotype`. 
+> Pour cela, dessinez un scatter plot (`geom_point()`) entre `blade.length.mm` et `rosette.leaf.num` en colorant les points en fonction de `genotype`. 
 >
-> What happens if you colour the points by `days.to.bolt`?
+> Que se passe t-il si les points sont colorés en fonction de `days.to.bolt`?
 
 
 ```{r}
@@ -62,8 +58,7 @@ ggplot(expt1, aes(blade.length.mm, rosette.leaf.num, colour = days.to.bolt)) +
 
 ---------------------
 
->**Challenge:** In the previous graph, colouring the genotype is redundant with 
-the facetting. Can you think of a more useful way to colour the points?
+>**Exercice:** Les couleurs n'apportent plus d'information supplementaire. Pensez à une utilisation plus interessante des couleurs dans ce graphque. 
 
 ```{r}
 ggplot(expt1, aes(blade.length.mm, rosette.leaf.num, colour = fluctuation)) +
@@ -74,9 +69,7 @@ ggplot(expt1, aes(blade.length.mm, rosette.leaf.num, colour = fluctuation)) +
 
 ------------------------
 
->**Challenge:** Can you modify the previous graph to facet the data by the 
-`fluctuation` treatment (as rows) and `day.length` (as columns) and colour the 
-points by genotype.
+>**Exercice:** Modifiez le graphiqe précédent afin de séparer les données (facet) en fonction de `fluctuation` en ligne, et `day.length` en colonne et de colorer les points en fonction du génotype.
 
 ```{r}
 ggplot(expt1, aes(blade.length.mm, rosette.leaf.num, colour = genotype)) +
@@ -87,10 +80,10 @@ ggplot(expt1, aes(blade.length.mm, rosette.leaf.num, colour = genotype)) +
 
 ------------------------
 
->**Challenge**: Can you produce a graph similar to 
-![Fig. 2B-C of Burghard et al 2015](../materials/Burghard_fig2BC.png). 
+>**Exercice**: Reproduisez le graphique suivant (ou quelque chose d'approchant): 
+![Fig. 2B-C of Burghard et al 2015](../materiel/Burghard_fig2BC.png). 
 >
->**Hint**: facet the plot by `day.length` and `temperature` and fill the boxplots by `fluctuation`.
+>**Indice**: facet le graphique avec `day.length` et `temperature` et colorer l'intérieur des boxplot en fonction de `fluctuation`.
 
 ```{r}
 ggplot(expt1, aes(genotype, days.to.bolt, fill = fluctuation)) +
