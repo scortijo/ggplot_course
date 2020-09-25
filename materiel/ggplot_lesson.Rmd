@@ -19,7 +19,7 @@ Lors de cette formation nous allons apprendre à visualiser des jeux de données
 
 # Mise en place
 
-Lors de cette formation nous allons ustiliser plusieurs packages qui contienent les fonctions dont nous avons besoin:
+Lors de cette formation nous allons utiliser plusieurs packages qui contiennent les fonctions dont nous avons besoin:
 - `tidyverse` qui contient plusiers packages dont `ggplot2`
 - `visdat`  qui permet une représentation rapide des données
 - `plotly` pour faire des graphiques interactifs
@@ -33,7 +33,7 @@ library(visdat)
 library(plotly)
 ```
 
-Vous devez aussi vous assurer que le répertoire de travail de R est bien le dossier qui contient le matériel de la lesson. Le chemin vers ce dossier va être différent en fonction de votre système opérateur. 
+Vous devez aussi vous assurer que le répertoire de travail de R est bien le dossier qui contient le matériel de la formation. Le chemin vers ce dossier va être différent en fonction de votre système opérateur. 
 
 ``` {r}
 setwd("~/Desktop/ggplot_course/materiel")
@@ -43,24 +43,23 @@ setwd("~/Desktop/ggplot_course/materiel")
 Pour cette lesson, nous allons utiliser une version légèrement modifée du jeu de donnée publié par [Burghard et al 2015](http://datadryad.org/resource/doi:10.5061/dryad.65d76). 
 
 
-# Lecture et vérification des données
+# Import et vérification des données
 
-La version simplifiée des données est dans le dossier ``data`` (`burghardt_et_al_2015_expt1.txt`). Il s'agit de données pour des phénotypes associés au temmps nécessaire à des plantes de différents génotypes pour fleurir dans différéntes conditions.
+La version simplifiée des données est dans le dossier ``data`` (`burghardt_et_al_2015_expt1.txt`). Il s'agit de données pour des phénotypes associés au temps nécessaire à des plantes de différents génotypes pour fleurir dans différentes conditions.
 
-Comme notre répertoire de travail est le dossier `materiel` , 
-nous devons lire les données ainsi:
+Comme notre répertoire de travail est le dossier `materiel` , nous devons importer les données ainsi:
 
 ```{r read data}
-# Lecture des données et chargement dans la variable (objet) expt1 
+# Import des données et chargement dans l'objet expt1 
 expt1 <- read_tsv("../data/burghardt_et_al_2015_expt1.txt")
 ```
 
-La fonction `read_csv()` imprime un message indiquant quel type de donnée est contenue dans les differentes colonnes du fichier. 
+La fonction `read_csv()` imprime un message indiquant quel type de données sont contenues dans les differentes colonnes du fichier. 
 
-Dans noter cas, certaines colonnes contiennes des données de type "character" (du texte) et d'autres des données numériques ("double" en présence de décimale, "integer" en absence de décimale).
+Dans notre cas, certaines colonnes contiennes des données de type "character" (du texte) et d'autres des données numériques ("double" en présence de décimale, "integer" en absence de décimale).
 
 
-Pour regarder rapidement les données, tapez le nom de la variable où sont les données (`expt1`).
+Pour regarder rapidement les données, tapez le nom de l'objet où sont les données (`expt1`).
 
 ```{r head expt1}
 expt1
@@ -70,7 +69,7 @@ Cela va nous montrer les 10 premières lignes du tableau ainsi que les colonnes 
 
 > **Challenge:** Combien y a t'il de lignes et colonnes dans les données?
 
-Une autre option est d'utiliser la fonction  ``View()`` pour accéder à une table intéractive où il est possible de trier et filtrer les données sans modifier la variable:
+Une autre option est d'utiliser la fonction  ``View()`` pour accéder à une table intéractive où il est possible de trier et filtrer les données sans modifier l'objet:
 
 ```{r View, eval = FALSE}
 View(expt1)
@@ -349,16 +348,16 @@ En conclusion, **il est possible de représenter de nombreuses informations en c
 
 Pour aller plus loin, il est même possible de créer des graphiques intéractifs en utilsant le package `plotly`.  
 
-Il faut d'abord mettre le graphique dans une variable, puis de l'utiliser dans la fonction `ggplotly()`.
+Il faut d'abord mettre le graphique dans un objet, puis de l'utiliser dans la fonction `ggplotly()`.
 
 
 ```{r go interactive}
-# Store plot in a variable called p1
+# Garder le graphique dans l'objet p1
 p1 <- ggplot(expt1, aes(blade.length.mm, rosette.leaf.num, colour = fluctuation)) + 
   geom_point() +
   facet_wrap(~genotype)
 
-# Render an interactive plot using ggplotly function
+# Utiliser la fonction ggplotly pour faire un graphique intéractif
 ggplotly(p1)
 ```
 
