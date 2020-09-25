@@ -34,14 +34,14 @@ library(plotly)
 ```
 
 Vous devez aussi vous assurer que le répertoire de travail de R est bien le dossier qui contient le matériel de la formation. Le chemin vers ce dossier va être différent en fonction de votre système opérateur.   
-Pour spécifier le répertoire de travail de R utilisez la fonction ``setwd``:
+Pour spécifier le répertoire de travail de R utilisez la fonction ``setwd()``:
 
 ``` {r}
 setwd("~/Desktop/ggplot_course/materiel")
 ```
 
 
-Pour cette lesson, nous allons utiliser une version légèrement modifée du jeu de donnée publié par [Burghard et al 2015](http://datadryad.org/resource/doi:10.5061/dryad.65d76). 
+Pour cette formation, nous allons utiliser une version légèrement modifée du jeu de donnée publié par [Burghard et al 2015](http://datadryad.org/resource/doi:10.5061/dryad.65d76). 
 
 
 # Import et vérification des données
@@ -55,7 +55,7 @@ Comme notre répertoire de travail est le dossier `materiel` , nous devons impor
 expt1 <- read_tsv("../data/burghardt_et_al_2015_expt1.txt")
 ```
 
-La fonction `read_csv()` imprime un message indiquant quel type de données sont contenues dans les differentes colonnes du fichier. 
+La fonction `read_tsv()` imprime un message indiquant quel type de données sont contenues dans les différentes colonnes du fichier. 
 
 Dans notre cas, certaines colonnes contiennes des données de type "character" (du texte) et d'autres des données numériques ("double" en présence de décimale, "integer" en absence de décimale).
 
@@ -66,7 +66,7 @@ Pour regarder rapidement les données, tapez le nom de l'objet où sont les donn
 expt1
 ```
 
-Cela va nous montrer les 10 premières lignes du tableau ainsi que les colonnes qui rentrent dans l'écran. 
+Cela va montrer les 10 premières lignes du tableau ainsi que les colonnes qui rentrent dans l'écran. 
 
 > **Challenge:** Combien y a t'il de lignes et colonnes dans les données?
 
@@ -137,11 +137,11 @@ Y a t'il des problème?
 
 Le gris dans la figure générée par ``vis_dat()`` sont des données manquantes. Plusieurs stratégies peuvent être utilisée:
 
-- supprimer les lignes qui contiennent des sonnées manquantes (le plus sûr, mais cause une perte de données) 
+- supprimer les lignes qui contiennent des données manquantes (le plus sûr, mais cause une perte de données) 
 - ignorer les données manquantes
 
 
-Pour la lesson, nous allons enlever les lignes contenant des données manquantes.
+Pour la formation, nous allons enlever les lignes contenant des données manquantes.
 
 ```{r drop missing}
 expt1 <- drop_na(expt1)
@@ -154,7 +154,7 @@ expt1 <- drop_na(expt1)
 
 Maintenant que nous avons vérifié la qualité de notre jeu de donnée, nous pouvons générer des graphiques afin d'en apprendre plus sur les données générées par l'expérience. 
 
-Nous allons utiliser le package R `ggplot2`, qui utilie le principe de "grammar or graphics". Il s'agit des briques du graphique. Cette méthode permettant de combiner et superposer différentes briques:
+Nous allons utiliser le package R `ggplot2`, qui utilise le principe de "grammar or graphics". Il s'agit des briques du graphique. Cette méthode permettant de combiner et superposer différentes couches de briques:
 
 - data (données)
 - aesthetics
@@ -177,7 +177,7 @@ Pour plus d'information sur la création de graphique avec `ggplot2`, voir [cett
 
 ## Faire un graphique avec ggplot2
 
-Commençons avec un boxplot: Plottons le `days.to.flower` pour les différents génotypes. 
+Commençons avec un boxplot: Dessinons le `days.to.flower` pour les différents génotypes. 
 
 La fonction `ggplot()` permet de commencer le graphique. Il faut aussi indiquer les données à utiliser:
 
@@ -185,7 +185,7 @@ La fonction `ggplot()` permet de commencer le graphique. Il faut aussi indiquer 
 ggplot(expt1)
 ```
 
-Mais cela ne produit qu'un canevas grise! 
+Mais cela ne produit qu'un canevas gris! 
 
 Il nous manque des briques. En l'occurence nous devons indiquer quelle _aesthetics_ (c'est la terminologie de `ggplot2`) nous voulons sur ce canevas gris. 
 Nous devons indiquer quelles sont les variables  _x_ et _y_ du boxplot.
@@ -197,7 +197,7 @@ ggplot(expt1, aes(x = genotype, y = days.to.flower))
 `ggplot` indique maintenant les variables `genotype` et `days.to.flower` 
 de nos données sur les axes _x_ and _y_ du graphique. 
 
-Mais toujours pas de graphique. C'est parce que nous pas indiqué à  But this is still `ggplot` quelle _geometrie_ nous voulons dessiner sur le canevas. Pour faire un boxplot, nous ajoutons au canevas (littéralement avec un `+`) ``geom_boxplot()``:
+Mais toujours pas de graphique. C'est parce que nous pas indiqué à `ggplot` quelle _geometrie_ nous voulons dessiner sur le canevas. Pour faire un boxplot, nous ajoutons au canevas (littéralement avec un `+`) ``geom_boxplot()``:
 
 ```{r}
 ggplot(expt1, aes(genotype, days.to.flower)) +
@@ -218,7 +218,7 @@ ggplot(expt1, aes(genotype, rosette.leaf.num)) +
   geom_boxplot()
 ```
 
->**Exercice:** Modifiez le graphique pour que les points soient devant, plutôt que derrière, les boxplots. 
+>**Exercice:** Modifiez le graphique pour que les points soient devant plutôt que derrière les boxplots. 
 
 
 ## Couleurs!
@@ -246,7 +246,7 @@ ggplot(expt1, aes(genotype, days.to.flower)) +
 
 C'est sympa, mais cela ne nous apporte pas d'information en plus sur les données. 
 
-Par exemple, ajoutons une couleur qui change en fonction d'un des traitement auquel les plantes ont été exposées (par exemple `fluctuation`). En langage `ggplot2`, nous voulons lier la valeur de la variable `fluctuation` à la couleur dans l' _aesthetic_ du graphique. 
+Par exemple, ajoutons une couleur qui change en fonction d'un des traitements auquel les plantes ont été exposées (par exemple `fluctuation`). En langage `ggplot2`, nous voulons lier la valeur de la variable `fluctuation` à la couleur dans l' _aesthetic_ du graphique. 
 
 Nous devons donc inclure cette information dans `aes()`:
 
@@ -267,7 +267,7 @@ ggplot(expt1, aes(genotype, days.to.flower, colour = fluctuation)) +
 
 Ce n'est pas ce que nous voulons. L'aesthetique `colour` a été lié à _toutes_ les géométries du graphique. C'est parce qu'elle a été définie dans la fonction `ggplot()`, qui affecte tous les `geom_object` qui viennent après.  
 
-Mais nous pouvons aussi définir l'aesthetique dans chaque geometrie:
+Mais nous pouvons aussi définir l'aesthetique dans chaque géometrie:
 
 ```{r}
 ggplot(expt1, aes(genotype, days.to.flower)) +
@@ -279,7 +279,7 @@ ggplot(expt1, aes(genotype, days.to.flower)) +
 >
 > Pour cela, dessinez un scatter plot (`geom_point()`) entre `blade.length.mm` et `rosette.leaf.num` en colorant les points en fonction de `genotype`. 
 >
-> Que se passe t'il si les points sont colorés en fonction de `days.to.bolt`?
+> Que se passe t-il si les points sont colorés en fonction de `days.to.bolt`?
 
 
 ## Facetting
