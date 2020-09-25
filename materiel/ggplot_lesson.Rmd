@@ -284,20 +284,16 @@ ggplot(expt1, aes(genotype, days.to.flower)) +
 
 ## Facetting
 
-Often, our data has several grouping variables, and colours alone are not enough 
-to fully represent the differences in the dataset. 
+Souvent trop de variables, ou de groupes, sont dans nos données pour pouvoir uniquement utiliser les couleurs pour les discriminer.  
 
-For example, the scatterplot produced in the previous exercise is pretty, but 
-very crowded. What if we wanted to isolate each genotype in individual plots? 
+C'est le cas par example du scatterplot produit dans l'exercice précédent, où les points sont colorés en fonction du génotype. Il est difficile de bien discerner les données pour chaque génotype car ils sont très raprochés. L'idéal serait d'avoir un scatterplort par génotype.   
 
-This easy to accomplish with `ggplot2` by adding a "facet" layer to our plot. 
-There are two types of facets:
+Ceci ets assez facile à faire avec`ggplot2`, il suffit d'ajouter une couche au graphique appelée "facet":
 
-- `facet_grid()` - arranges sub-plots in rows and/or columns
-- `facet_wrap()` - arranges sub-plots in a ribbon that "wraps" around 
-after a fixed number of plots
+- `facet_grid()` - qui permet d'organiser les panneaux du graphique en lignes et/ou colonnes
+- `facet_wrap()` - qui permet d'organiser les panneaux du graphique à la suite les uns des autres qui revient à la ligne après un certain nombre de panneaux. 
 
-Let's start with `facet_grid()` and see it in action:
+Voyons comment `facet_grid()` fonctionne:
 
 ```{r}
 ggplot(expt1, aes(blade.length.mm, rosette.leaf.num, colour = genotype)) +
@@ -305,13 +301,11 @@ ggplot(expt1, aes(blade.length.mm, rosette.leaf.num, colour = genotype)) +
     facet_grid(genotype ~ temperature)
 ```
 
-In the code above, we use `facet_grid()` to define variables that partition our 
-data by rows and columns, using the notation `(rows ~ columns)`.
+Dans `facet_grid()`, nous utilisons la notation `(ligne ~ colonne)` pour definir les variables qui sont utilisées pour séparer les panneaux en ligne et colonnes.
 
->**Exercice:** In the previous graph, colouring the genotype is redundant with 
-the facetting. Can you think of a more useful way to colour the points?
+>**Exercice:** Les couleurs n'apportent plus d'information supplementaire. Pensez à une utilisation plus interessante des couleurs dans ce graphque. 
 
-It is possible to use `facet_grid()` with a single variable:
+Il est possible de ne préciser qu'une variable dans `facet_grid()` :
 
 ```{r}
 # Facet by rows
@@ -325,8 +319,7 @@ ggplot(expt1, aes(blade.length.mm, rosette.leaf.num, colour = fluctuation)) +
     facet_grid(. ~ genotype)
 ```
 
-When we are only partitioning by one variable, often `facet_wrap()` produces a 
-better display. For example:
+Il est aussi possible d'utiliser `facet_wrap()` si l'on n'utilise qu'une variable pour séparer les données :
 
 ```{r decomposed plot}
 ggplot(expt1, aes(blade.length.mm, rosette.leaf.num, colour = fluctuation)) +
@@ -334,9 +327,7 @@ ggplot(expt1, aes(blade.length.mm, rosette.leaf.num, colour = fluctuation)) +
     facet_wrap( ~ genotype)
 ```
 
->**Exercice:** Can you modify the previous graph to facet the data by the 
-`fluctuation` treatment (as rows) and `day.length` (as columns) and colour the 
-points by genotype.
+>**Exercice:** Modifiez le graphiqe précédent afin de séparer les données (facet) en fonction de `fluctuation` en ligne, et `day.length` en colonne et de colorer les points en fonction du génotype.
 
 ```{r, echo = FALSE}
 ggplot(expt1, aes(blade.length.mm, rosette.leaf.num, colour = genotype)) +
@@ -344,15 +335,14 @@ ggplot(expt1, aes(blade.length.mm, rosette.leaf.num, colour = genotype)) +
   facet_grid(fluctuation ~ day.length)
 ```
 
-In conclusion, **by effectively combining facets, colours and other aesthetics 
-you can represent many dimensions of your data in a single graph!**
+En conclusion, **il est possible de représenter de nombreuses informations en combinant efficacement facets, couleurs et autres aesthetiques!**
 
 -----
 
->**Exercice**: Can you produce a graph similar to 
+>**Exercice**: Reproduisez le graphique 
 ![Fig. 2B-C of Burghard et al 2015](../materiel/Burghard_fig2BC.png). 
 >
->**Hint**: facet the plot by `day.length` and `temperature` and fill the boxplots by `fluctuation`.
+>**Indice**: facet le graphique avec `day.length` et `temperature` rempli les boxplot en fonction de `fluctuation`.
 
 
 ## Interactivity!
