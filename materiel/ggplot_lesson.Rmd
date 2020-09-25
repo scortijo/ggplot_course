@@ -33,7 +33,8 @@ library(visdat)
 library(plotly)
 ```
 
-Vous devez aussi vous assurer que le répertoire de travail de R est bien le dossier qui contient le matériel de la formation. Le chemin vers ce dossier va être différent en fonction de votre système opérateur. 
+Vous devez aussi vous assurer que le répertoire de travail de R est bien le dossier qui contient le matériel de la formation. Le chemin vers ce dossier va être différent en fonction de votre système opérateur.   
+Pour spécifier le répertoire de travail de R utilisez la fonction ``setwd``:
 
 ``` {r}
 setwd("~/Desktop/ggplot_course/materiel")
