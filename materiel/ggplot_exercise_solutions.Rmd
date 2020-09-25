@@ -8,7 +8,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # [Retour à la page d'accueil](https://scortijo.github.io/ggplot_course/)
 
-## Formation ggplot2 - solutions des exercices
+## Formation ggplot2 - solution des exercices
 
 ```{r, echo=FALSE, message=FALSE}
 library(tidyverse)
@@ -47,8 +47,7 @@ ggplot(expt1, aes(blade.length.mm, rosette.leaf.num, colour = genotype)) +
   geom_point()
 ```
 
-If we colour the points by `days.to.bolt` the colour scale is continuous 
-rather than discrete (because `days.to.bolt` is a numeric variable):
+L'échelle de couleur est continue si nous utilisons `days.to.bolt` pour colorer les points car c'est une variable numérique:
 
 ```{r}
 ggplot(expt1, aes(blade.length.mm, rosette.leaf.num, colour = days.to.bolt)) +
