@@ -19,10 +19,10 @@ Lors de cette formation nous allons apprendre à visualiser des jeux de données
 
 # Mise en place
 
-Lors de cette formation nous allons utiliser plusieurs packages qui contiennent les fonctions dont nous avons besoin:
-- `tidyverse` qui contient plusiers packages dont `ggplot2`
-- `visdat`  qui permet une représentation rapide des données
-- `plotly` pour faire des graphiques interactifs
+Lors de cette formation nous allons utiliser plusieurs packages qui contiennent les fonctions dont nous avons besoin:  
+- `tidyverse` qui contient plusiers packages dont `ggplot2`  
+- `visdat`  qui permet une représentation rapide des données  
+- `plotly` pour faire des graphiques interactifs  
 
 
 Vous avez normalement déjà installé ces packages. Pour vérifier qu'ils sont bien installé, et pour les importer dans votre session, utilisez la fonction ``library()`` : 
