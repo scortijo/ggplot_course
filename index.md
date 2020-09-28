@@ -9,14 +9,14 @@
 
 ### Description
 
-Cette formation va vous apprendre comment réaliser des graphique sur **R** en utilisant **ggplot2**, en partant de données tabulaires (ce que vous pourriez créer en utilisant excel).
+Cette formation va vous apprendre comment réaliser des graphiques sur **R** en utilisant **ggplot2**, en partant de données tabulaires (ce que vous pourriez créer en utilisant excel).
 
 Le jeu de données que nous allons utiliser en exemple a été publié par 
 [Burghardt .. Schmitt (2015)](https://doi.org/10.1111/nph.13799). 
 
 
 ### Prérequis
-Les participant doivent déjà avoir des bases de R et savoir utiliser Rstudio. Si ce n'est pas le cas, veuillez vous inscrire pour une formation R avant de venir à la formation ggplot.
+Les participants doivent déjà avoir des bases de R et savoir utiliser Rstudio. Si ce n'est pas le cas, veuillez vous inscrire pour une formation R avant de venir à la formation ggplot.
 
 
 
@@ -27,16 +27,15 @@ Les participants doivent amener leur ordinateur sur lequel R et R studio sont in
 
 Dans chaque cas, téléchargez la version pour votre système opérateur (Mac, Windows ou Linux) et installez les programmes normalement.
 
-Vous devez aussi avoir les packages `tidyverse`, `visdat` et `plotly` installé. 
+Vous devez aussi avoir les packages `tidyverse`, `visdat` et `plotly` installés. 
 Pour cela:
 1. Assurez vous d'avoir acces à internet
 2. Ouvrez Rstudio
-3. Dans la "console" (panel en haut à gauche), tapez `install.packages("tidyverse")` puis enter
-4. De même tapez `install.packages("visdat")` et enter puis enfin `install.packages("plotly")` et enter
+3. Dans la "console" (panel en haut à gauche), tapez `install.packages(c("tidyverse","visdat", "plotly"))` puis enter
 4. Assurez vous que l'installation a fonctionné en tapant `library(tidyverse)` (puis faites la même chose avec `visdat` et `plotly`)
 5. Le message affiché doit être similaire à la capture d'écran ci-dessous. Si vous avez un message du type: 
 "Error in library(tidyverse): there is no package called 'tidyverse'"
-**contactez un des instructeur avant la formation**.
+**contactez un des instructeurs avant la formation**.
 
 ![capture d'écran d'un installation correcte](installation_package_instructions.png)
 
@@ -55,7 +54,7 @@ Pour cela:
 
 ### Ressources 
 
-[Gallerie de graphiques pouvant être réalisé avec ggplot2](https://www.r-graph-gallery.com/)
+[Gallerie de graphiques pouvant être réalisés avec ggplot2](https://www.r-graph-gallery.com/)
 
 [antisèche pour ggplot2](https://rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf)
 

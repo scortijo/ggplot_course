@@ -19,6 +19,8 @@ Lors de cette formation nous allons apprendre à visualiser des jeux de données
 
 # Mise en place
 
+Téléchargez le matériel de la formation en cliquant sur `Download.zip` ou `Download.tar.gz`, dezpipez le répertoire et ensuite placer vous dedans. Ouvrez avec `Rstudio` le fichier `Script_ggplot_lesson.R` qui est dans le répertoire `materiel`. Nous allons coder ensemble dans ce script, qui est quasiment vide pour le moment. 
+
 Lors de cette formation nous allons utiliser plusieurs packages qui contiennent les fonctions dont nous avons besoin:  
 - `tidyverse` qui contient plusiers packages dont `ggplot2`  
 - `visdat`  qui permet une représentation rapide des données  
@@ -57,7 +59,7 @@ expt1 <- read_tsv("../data/burghardt_et_al_2015_expt1.txt")
 
 La fonction `read_tsv()` imprime un message indiquant quel type de données sont contenues dans les différentes colonnes du fichier. 
 
-Dans notre cas, certaines colonnes contiennes des données de type "character" (du texte) et d'autres des données numériques ("double" en présence de décimale, "integer" en absence de décimale).
+Dans notre cas, certaines colonnes contiennent des données de type "character" (du texte) et d'autres des données numériques ("double" en présence de décimale, "integer" en absence de décimale).
 
 
 Pour regarder rapidement les données, tapez le nom de l'objet où sont les données (`expt1`).
@@ -70,7 +72,7 @@ Cela va montrer les 10 premières lignes du tableau ainsi que les colonnes qui r
 
 > **Challenge:** Combien y a t'il de lignes et colonnes dans les données?
 
-Une autre option est d'utiliser la fonction  ``View()`` pour accéder à une table intéractive où il est possible de trier et filtrer les données sans modifier l'objet:
+Une autre option est d'utiliser la fonction  ``View()`` pour accéder à une table interactive où il est possible de trier et filtrer les données sans modifier l'objet:
 
 ```{r View, eval = FALSE}
 View(expt1)
@@ -106,7 +108,7 @@ Nous avons déjà utilisé de noubreuses fonctions:
 - ``summary()``
 - ``dim()``
 
-Il est bien sûr difficile de ce souvenir du nom de toutes ces fonctions, ce quelles font et comment les utiliser. 
+Il est bien sûr difficile de ce souvenir du nom de toutes ces fonctions, ce qu'elles font et comment les utiliser. 
 Heuresement, pour nous aider, une aide est disponible dans R en tapant le nom d'une fonction précédé de `?`
 
 ```{r get help}
@@ -118,7 +120,7 @@ Bien sur, une recherche sur internet est aussi une solution très efficace pour 
 
 > **Challenge** que fait la fonction ``head()`` ? 
 
-> **Challenge** Comment regarder les dernières lignes de le notre jeu de donnée? (indice: ``?tail``)
+> **Challenge** Comment regarder les dernières lignes de le notre jeu de données? (indice: ``?tail``)
 
 
 ## Inspection visuelle des données
@@ -135,7 +137,7 @@ Y a t'il des problème?
 
 ## Données maquantes
 
-Le gris dans la figure générée par ``vis_dat()`` sont des données manquantes. Plusieurs stratégies peuvent être utilisée:
+Le gris dans la figure générée par ``vis_dat()`` sont des données manquantes. Plusieurs stratégies peuvent être utilisées:
 
 - supprimer les lignes qui contiennent des données manquantes (le plus sûr, mais cause une perte de données) 
 - ignorer les données manquantes
@@ -160,7 +162,7 @@ Nous allons utiliser le package R `ggplot2`, qui utilise le principe de "grammar
 - aesthetics
 - objet geometrique (type de graphique)
 - transformations statistiques
-- adjustements positionels
+- ajustements positionels
 - faceting
 
 Les trois premières briques sont essentielles: data, aesthetics et objet geometrique. 
@@ -265,7 +267,7 @@ ggplot(expt1, aes(genotype, days.to.flower, colour = fluctuation)) +
   geom_boxplot(alpha = 0.5)
 ```
 
-Ce n'est pas ce que nous voulons. L'aesthetique `colour` a été lié à _toutes_ les géométries du graphique. C'est parce qu'elle a été définie dans la fonction `ggplot()`, qui affecte tous les `geom_object` qui viennent après.  
+Ce n'est pas ce que nous voulons. L'aesthetique `colour` a été liée à _toutes_ les géométries du graphique. C'est parce qu'elle a été définie dans la fonction `ggplot()`, qui affecte tous les `geom_object` qui viennent après.  
 
 Mais nous pouvons aussi définir l'aesthetique dans chaque géometrie:
 
@@ -388,7 +390,7 @@ ggplot(expt1, aes(genotype, days.to.flower)) +
 ```
 
 
-La fonction `theme()` peut être utilisée pour modifier des éléments en particulier du graphique. Il y a tellement de possibilité que le mieux est de rechercher sur internet la modification que vous voulez faire.  
+La fonction `theme()` peut être utilisée pour modifier des éléments en particulier du graphique. Il y a tellement de possibilités que le mieux est de rechercher sur internet la modification que vous voulez faire.  
 
 
 Par exemple, en recherchant "vertical labels x axis ggplot2" nous obtenons [cette solution](https://stackoverflow.com/questions/1330989/rotating-and-spacing-axis-labels-in-ggplot2): 
